@@ -1,262 +1,175 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+# SpiderNet
 
-`<a name="readme-top"></a>`
+Un Logiciel/configuration pour permettre de créer un evil portal et de récupérer des informations sur un ordinateur cible.
 
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-<!-- PROJECT SHIELDS -->
+![logo spidernet](./img/Spider_net.png "Spider_net.png")
 
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+## Demo
 
-[Contributors][contributors-url]
-[Forks][forks-url]
-[Stargazers][stars-url]
-[Issues][issues-url]
-[MIT License][license-url]
-[LinkedIn][linkedin-url]
+Insert gif or link to demo
 
-<!-- PROJECT LOGO -->
+## Screenshots
 
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
-  </a>
+![App Screenshot](./img/for_readme/Image5.png "Image de l'app")
 
-<h3 align="center">Best-README-Template</h3>
+## Déploiement
 
-<p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
+Pour déployer ce projet vous devez :
 
-<!-- TABLE OF CONTENTS -->
+### Matériel requis :
 
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+- Raspberry Pi 4,
+- Câble ethernet
+- Carte Micro SD
+- Adaptateur Micro SD to USB
 
-<!-- ABOUT THE PROJECT -->
+### Logiciel requis :
 
-## About The Project
+- Raspap,
+- Nodogslpash
+- Raspberry Pi Imager
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+### Les étapes à suivre :
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+- Il faut d’abord se munir de la carte SD branchée dans l’adapteur Micro SD to USB afin de mettre une image qui permettra de à la raspberry d’avoir une OS.
+- Après cela, il faut ouvrir Raspberry Pi Imager et sélectionner le modèle de Raspberry PI, Model 4B dans notre cas et choisir l’image Raspberry OS Lite 64 bits et laisser le logiciel écrire le système d’opération.
+- Une fois que cela est fait il faut brancher la carte SD dans la raspberry PI et l’allumer.
+- Il faut ensuite brancher la raspberry pi à un réseau LAN grâce au port Ethernet et récupérer l’adresse IP de celle-ci afin de pouvoir se connecter en SSH à la raspberry mais aussi pour configurer plus tard le réseau hotspot espion.
+- Une fois cette connexion SSH faite, il faut d’abord mettre à jour les paquets installés :
 
-Here's why:
+  ```bash
+  sudo apt-get update 
+  sudo apt-get full-upgrade
+  ```
+- Il faut ensuite procéder au redémarrage de l’outil physique :
 
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life 😄
+  ```bash
+  sudo reboot
+  ```
+- Une fois redémarré, nous taperons la ligne de commande suivante :
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+  ```bash
+  sudo raspi-config 
+  ```
+- S'affiche à l'écran cette fenêtre :
+  ![image 1](./img/for_readme/Image1.png "Image1.png")
+- Il faut ensuite choisir l’option numéro 5, Localisation Options.
+  S’affichera après cela la fenêtre suivante :
+  ![image 2](./img/for_readme/Image2.png "Image2.png")
+- Nous choisirons l’option L4 et nous sélectionnerons FR – France comme pays pour le WiFi.
+- Après cela reste à installer le premier logiciel, raspAP, ce que nous ferons grâce à la commande suivante :
 
-Use the `BLANK_README.md` to get started.
+  ```bash
+  curl -sL https://install.raspap.com | bash
+  ```
+- Une fois l’installation terminée, nous devons vérifier que wlan0 est libre et qu’elle n’est pas connectée à un wifi existant.
+- 
+- Pour se faire, nous allons taper la commande :
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Next][Next-url]
-* [React][React-url]
-* [Vue][Vue-url]
-* [Angular][Angular-url]
-* [Svelte][Svelte-url]
-* [Laravel][Laravel-url]
-* [Bootstrap][Bootstrap-url]
-* [JQuery][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-* npm
-  ```sh
-  npm install npm@latest -g
+  ```bash
+  nmcli connection show 
   ```
 
-### Installation
+  Si le wlan0 ou preconfigured est en vert, il faut le désactiver :
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+  ![image 3](./img/for_readme/Image3.png "Image3.png")
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+  Nous le ferons avec la commande suivante :
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+  ```bash
+  sudo nmcli connection down preconfigured
+  ```
 
-<!-- USAGE EXAMPLES -->
+  ![image 4](./img/for_readme/Image4.png "Image4.png")
+- Maintenant nous allons procéder à l’installation du deuxième logiciel nous permettant la mise en place d’un portail captif : "nodogsplash".
+- Il faut d’abord télécharger une dependencies requise par nodogsplash :
 
-## Usage
+  ```bash
+  sudo apt-get install libmicrohttpd-dev
+  ```
+- On clone ensuite le projet nodogsplash :
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+  ```bash
+  cd ~/
+  git clone https://github.com/nodogsplash/nodogsplash.git
+  ```
+- Ensuite on compile :
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+  ```bash
+  cd nodogsplash
+  make
+  sudo make install
+  ```
+- On doit ensuite changer la configuration réseau de la raspberry PI pour wlan0 utilisé par défaut par RaspAP.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+  ```bash
+  sudo nano /etc/nodogsplash/nodogsplash.conf
+  ```
 
-<!-- ROADMAP -->
+  Il faut s’assurer que toutes les données suivantes soient renseignées :
+
+  ```bash
+  # GatewayInterface is not autodetected, has no default, and must be set here.   
+  # Set GatewayInterface to the interface on your router   
+  # that is to be managed by Nodogsplash.   
+  # Typically br-lan for the wired and wireless lan.   
+  # GatewayInterface wlan0   
+  #   
+  # Parameter: GatewayAddress   
+  # Default: Discovered from GatewayInterface   
+  #  
+  # This should be autodetected on an OpenWRT system, but if not:   
+  # Set GatewayAddress to the IP address of the router on   
+  # the GatewayInterface.  This is the address that the Nodogsplash   
+  # server listens on.     GatewayAddress 10.3.141.1  
+  ```
+- Nous allons ensuite démarrer le portail captif :
+
+  ```bash
+  sudo cp ~/nodogsplash/debian/nodogsplash.service /lib/systemd/system/
+  sudo systemctl enable nodogsplash.service
+  ```
+- Nous allons ensuite modifier le portail captif par défaut et faire la copie exacte d’un site qu’il sera pertinent d’usurper pour le réseau que nous souhaitons cibler.
+
+  ```bash
+  cd /etc/nodogsplash/htdocs/
+  ```
+- Une fois cette étape terminée, nous ouvrirons le navigateur sur notre ordinateur (Pas sur la raspberry) pour configurer le hotspot espion.
+- Il faut taper dans la barre de recherche de ce navigateur l’adresse IP de la raspberry.
+- Nous sera demandé un utilisateur et un mot de passe qui sont admin et secret par défaut.
+
+  On se retrouve sur cette page :
+
+  ![image 5](./img/for_readme/Image5.png "Image5.png")
+- Ensuite nous cliquerons sur hotspot :
+
+  ![image 6](./img/for_readme/Image6.png "Image6.png")
+- Il faut ensuite pour le SSID le même nom que le réseau que nous souhaitons cibler.
+- Il faut aussi aller dans Security et mettre comme MDP le mot de passe du réseau que nous ciblons s’il est sécurisé :
+
+  ![image 7](./img/for_readme/Image7.png "Image7.png")
+- Ensuite il suffit de cliquer sur Stop hotspot et après rechargement de la page sur Start hotspot pour démarrer le hotspot espion.
 
 ## Roadmap
 
-- [X] Add Changelog
-- [X] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
+- Créer un hotspot Wi-Fi
+- Créer un portail captif
+- Récupérer les informations entrée par la cible
+- Rediriger automatiquement son trafic
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+## Auteurs
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- Ahmed Merouane AIT MOKHTAR
+- Salomé PORTOS
+- Amr HEGAZY
+- Riad MAHIOUT
+- [Clément LINOSSIER](https://www.github.com/Cronix2)
+- [Mohamed Amine IDIRI](https://github.com/amine-dz06)
 
-<!-- CONTRIBUTING -->
+## Remerciements
 
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
-
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven&#39;s Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven&#39;s Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: img/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com
+- [Créer un acces wifi grace à un Raspberry](https://www.netresec.com/?page=Blog&month=2019-09&post=Raspberry-PI-WiFi-Access-Point-with-TLS-Inspection)
+- [De superbes templates de readme](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+- [Comment écrire un bon readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
