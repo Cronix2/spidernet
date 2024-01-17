@@ -18,20 +18,20 @@ Insert gif or link to demo
 
 Pour déployer ce projet vous devez :
 
-### Matériel requis :
+### Matériel requis
 
 - Raspberry Pi 4,
 - Câble ethernet
 - Carte Micro SD
 - Adaptateur Micro SD to USB
 
-### Logiciel requis :
+### Logiciel requis
 
 - Raspap,
 - Nodogslpash
 - Raspberry Pi Imager
 
-### Les étapes à suivre :
+### Les étapes à suivre
 
 - Il faut d’abord se munir de la carte SD branchée dans l’adapteur Micro SD to USB afin de mettre une image qui permettra de à la raspberry d’avoir une OS.
 - Après cela, il faut ouvrir Raspberry Pi Imager et sélectionner le modèle de Raspberry PI, Model 4B dans notre cas et choisir l’image Raspberry OS Lite 64 bits et laisser le logiciel écrire le système d’opération.
@@ -43,16 +43,19 @@ Pour déployer ce projet vous devez :
   sudo apt-get update 
   sudo apt-get full-upgrade
   ```
+  
 - Il faut ensuite procéder au redémarrage de l’outil physique :
 
   ```bash
   sudo reboot
   ```
+
 - Une fois redémarré, nous taperons la ligne de commande suivante :
 
   ```bash
   sudo raspi-config 
   ```
+
 - S'affiche à l'écran cette fenêtre :
   ![image 1](./img/for_readme/Image1.png "Image1.png")
 - Il faut ensuite choisir l’option numéro 5, Localisation Options.
@@ -64,8 +67,9 @@ Pour déployer ce projet vous devez :
   ```bash
   curl -sL https://install.raspap.com | bash
   ```
+
 - Une fois l’installation terminée, nous devons vérifier que wlan0 est libre et qu’elle n’est pas connectée à un wifi existant.
-- 
+
 - Pour se faire, nous allons taper la commande :
 
   ```bash
@@ -89,12 +93,14 @@ Pour déployer ce projet vous devez :
   ```bash
   sudo apt-get install libmicrohttpd-dev
   ```
+
 - On clone ensuite le projet nodogsplash :
 
   ```bash
   cd ~/
   git clone https://github.com/nodogsplash/nodogsplash.git
   ```
+
 - Ensuite on compile :
 
   ```bash
@@ -102,6 +108,7 @@ Pour déployer ce projet vous devez :
   make
   sudo make install
   ```
+
 - On doit ensuite changer la configuration réseau de la raspberry PI pour wlan0 utilisé par défaut par RaspAP.
 
   ```bash
@@ -125,17 +132,20 @@ Pour déployer ce projet vous devez :
   # the GatewayInterface.  This is the address that the Nodogsplash   
   # server listens on.     GatewayAddress 10.3.141.1  
   ```
+
 - Nous allons ensuite démarrer le portail captif :
 
   ```bash
   sudo cp ~/nodogsplash/debian/nodogsplash.service /lib/systemd/system/
   sudo systemctl enable nodogsplash.service
   ```
+
 - Nous allons ensuite modifier le portail captif par défaut et faire la copie exacte d’un site qu’il sera pertinent d’usurper pour le réseau que nous souhaitons cibler.
 
   ```bash
   cd /etc/nodogsplash/htdocs/
   ```
+
 - Une fois cette étape terminée, nous ouvrirons le navigateur sur notre ordinateur (Pas sur la raspberry) pour configurer le hotspot espion.
 - Il faut taper dans la barre de recherche de ce navigateur l’adresse IP de la raspberry.
 - Nous sera demandé un utilisateur et un mot de passe qui sont admin et secret par défaut.
