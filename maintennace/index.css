@@ -1,0 +1,62 @@
+body {
+  background-image: url(../img/img_login.jpg);
+  background-size: cover;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background-color: rgba(95, 158, 160, 0.647);
+  margin: auto;
+  width: 600px;
+  max-width: 90%;
+}
+
+.error-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+
+}
+
+.error-image h1 {
+  font-size: 120px;
+  margin: 48px auto 20px;
+}
+
+.error-msg-container {
+  margin: 18px auto 30px auto;
+  max-width: 800px;
+  width: 80%;
+  text-align: center;
+}
+
+.error-msg-container h1 {
+  font-size: 56px;
+  max-width: 560px;
+  margin: auto auto 48px;
+}
+
+img {
+  max-width: 75%;
+}
+
+.chargement {
+  max-width: 150px;
+  padding-bottom: 50px;
+
+}
+
+.scrap {
+  padding: 38px;
+  padding-right:50px;
+
+
+}
+.Esiea{
+  max-width: 190px;
+}
