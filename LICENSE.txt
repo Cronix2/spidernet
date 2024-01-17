@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 Ahmed Merouane AIT MOKHTAR, Salomé PORTOS, Amr HEGAZY, Riad MAHIO, Clément LINOSSIER, Mohamed Amine IDIRI
+Copyright (c) 2024 Ahmed Merouane AIT MOKHTAR, Salomé PORTOS, Amr HEGAZY, Riad MAHIOUT, Clément LINOSSIER, Mohamed Amine IDIRI
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
