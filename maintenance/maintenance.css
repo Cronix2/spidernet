@@ -46,9 +46,10 @@ img {
 }
 
 .chargement {
-  max-width: 150px;
+  width: auto; /* Adjust these values to increase or decrease the size of an image or other element */
+  height: 50px;
+  max-width: auto;
   padding-bottom: 50px;
-
 }
 
 .scrap {
@@ -59,4 +60,16 @@ img {
 }
 .Esiea{
   max-width: 190px;
+}
+
+@media (max-width: 600px) {
+  .container {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .error-image img,
+  .error-msg-container img {
+      max-width: 100%;
+  }
 }
