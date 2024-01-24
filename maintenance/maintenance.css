@@ -64,12 +64,15 @@ img {
 
 @media (max-width: 600px) {
   .container {
-      width: 100%;
-      padding: 10px;
+      width: 90%;
+      padding: 5%;
   }
 
   .error-image img,
   .error-msg-container img {
       max-width: 100%;
+  }
+  .error-msg-container h1 {
+      font-size: 11.8vw;
   }
 }
