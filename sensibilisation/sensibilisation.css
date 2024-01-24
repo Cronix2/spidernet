@@ -1,17 +1,39 @@
-body{
-background-image: url(../img/hack.jpg);
-background-size: cover;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center; 
-gap: 200px; ;
+body {
+    background-image: url(../img/hack.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* Change this to column to stack items vertically */
+    align-items: center; /* This will center items horizontally */
+    justify-content: center; /* This will center items vertically */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* This makes sure the body takes up the full viewport height */
 }
 
-.container{
-    max-width: 100vh;
-    background-color: rgb(210, 209, 209);
-    opacity: 0.5;
-    margin-top: 40vh;
+.container {
+    max-width: 650px;
+    width: 80%; /* Adjust this to control the width of the container */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+    color: #222222;
+}
+
+p::before {
+    content: "\2022";
+    color: #333;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
