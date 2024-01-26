@@ -43,19 +43,16 @@ Pour déployer ce projet vous devez :
   sudo apt-get update 
   sudo apt-get full-upgrade
   ```
-  
 - Il faut ensuite procéder au redémarrage de l’outil physique :
 
   ```bash
   sudo reboot
   ```
-
 - Une fois redémarré, nous taperons la ligne de commande suivante :
 
   ```bash
   sudo raspi-config 
   ```
-
 - S'affiche à l'écran cette fenêtre :
   ![image 1](./img/for_readme/Image1.png "Image1.png")
 - Il faut ensuite choisir l’option numéro 5, Localisation Options.
@@ -67,9 +64,7 @@ Pour déployer ce projet vous devez :
   ```bash
   curl -sL https://install.raspap.com | bash
   ```
-
 - Une fois l’installation terminée, nous devons vérifier que wlan0 est libre et qu’elle n’est pas connectée à un wifi existant.
-
 - Pour se faire, nous allons taper la commande :
 
   ```bash
@@ -93,14 +88,12 @@ Pour déployer ce projet vous devez :
   ```bash
   sudo apt-get install libmicrohttpd-dev
   ```
-
 - On clone ensuite le projet nodogsplash :
 
   ```bash
   cd ~/
   git clone https://github.com/nodogsplash/nodogsplash.git
   ```
-
 - Ensuite on compile :
 
   ```bash
@@ -108,7 +101,6 @@ Pour déployer ce projet vous devez :
   make
   sudo make install
   ```
-
 - On doit ensuite changer la configuration réseau de la raspberry PI pour wlan0 utilisé par défaut par RaspAP.
 
   ```bash
@@ -132,20 +124,17 @@ Pour déployer ce projet vous devez :
   # the GatewayInterface.  This is the address that the Nodogsplash   
   # server listens on.     GatewayAddress 10.3.141.1  
   ```
-
 - Nous allons ensuite démarrer le portail captif :
 
   ```bash
   sudo cp ~/nodogsplash/debian/nodogsplash.service /lib/systemd/system/
   sudo systemctl enable nodogsplash.service
   ```
-
 - Nous allons ensuite modifier le portail captif par défaut et faire la copie exacte d’un site qu’il sera pertinent d’usurper pour le réseau que nous souhaitons cibler.
 
   ```bash
   cd /etc/nodogsplash/htdocs/
   ```
-
 - Une fois cette étape terminée, nous ouvrirons le navigateur sur notre ordinateur (Pas sur la raspberry) pour configurer le hotspot espion.
 - Il faut taper dans la barre de recherche de ce navigateur l’adresse IP de la raspberry.
 - Nous sera demandé un utilisateur et un mot de passe qui sont admin et secret par défaut.
@@ -168,6 +157,41 @@ Pour déployer ce projet vous devez :
 - Créer un portail captif
 - Récupérer les informations entrée par la cible
 - Rediriger automatiquement son trafic
+
+## Sensibilisation quant aux risques liés au manque d'attention sur internet
+
+Arnaque, vol de données, virus, les dangers liées à la navigation sur internet sont nombreux. Des actes vous paraissant banal peuvent ruiner vos vies. Ainsi mieux vaut être vigilant et anticiper les dangers plutôt que d’y faire face et remédier aux problèmes.
+Voici 7 réflexes à adopter pour vous préserver au mieux.
+
+### 1. Faites vos mises à jour dès que possible
+
+Les brèches de sécurité apparaissent le plus souvent sur des systèmes d’exploitation qui ne sont pas à jour. Il faut mettre à jour vos logiciels, votre système d’exploitation et même les navigateurs que vous utilisez dès que possible.
+
+### 2. Vérifiez les sites sur lesquels vous naviguez
+
+Ne vous rendez pas sur des sites non sécurisés (tout site n’ayant pas un cadenas à
+coté de l’url est potentiellement douteux). Ne téléchargez pas non plus de logiciels « cracké », il sera potentiellement accompagné d’une mauvaise surprise comme un virus.
+
+### 3. Choisissez des mots de passe compliqué et ne les réutilisez pas
+
+Choisissez des mots de passes avec beaucoup de caractères (12 au minimum) avec des majuscules et des symboles pour plus de sécurité. N’utilisez pas le même mot de passe partout, cantonnez-vous à 3 utilisations du même mot de passe au maximum.
+
+### 4. Vérifiez toujours l’identité de l’expéditeur lors de la réception d’un mail
+
+Lorsque vous recevez un mail ne cliquez sur aucun lien et n’ouvrez aucune pièce jointe avant de vous assurer que l’expéditeur n’ai rien qui vous paraisse suspect ou inhabituel.
+Faites attention, aujourd’hui les arnaques par mail sont de mieux en mieux réalisées et vous pouvez n’y voir que du feu si vous n’êtes pas attentifs.
+
+### 5. Munissez-vous d’un bon anti-virus
+
+L’anti-virus vous protègera des plus grosses attaques auxquelles vous devez faire face sans bouger le petit doigt. Les virus peuvent se cacher partout, que ce soit une pièce jointe dans un mail, ou derrière un logiciel que vous installez, ils peuvent permettre d’accéder à vos données et aller même jusqu’au contrôle de votre machine. Norton, Avast ou encore McAfee pour ne citer qu’eux sont très bons.
+
+### 6. Sauvegardez vos données sur un appareil externe déconnecté
+
+Sauvegardez vos données sur un appareil déconnecté toujours à votre disposition, une clé USB ou un disque dur externe est nécessaire au cas où vous perdriez vos données suite à une attaque.
+
+### 7. Retirez la connexion automatique au Wi-Fi
+
+Pour deux réseaux ayant le même nom (SSID), si votre connexion automatique est activée, votre machine se connectera au Wi-Fi ayant le signal le plus puissant. Ainsi, un pirate voulant récupérer vos données n’aura qu’à utiliser le même nom et mot de passe qu’un Wi-Fi connu par votre machine pour arriver à ses fins.
 
 ## Auteurs
 
